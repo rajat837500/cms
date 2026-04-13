@@ -8,11 +8,13 @@ import { getPages } from "@/lib/storage";
 import TextRenderer from "@/components/blocks/text/TextRenderer";
 import ImageRenderer from "@/components/blocks/image/ImageRenderer";
 import ButtonRenderer from "@/components/blocks/button/ButtonRenderer";
+import { useRouter } from "next/navigation";
 
 export default function PreviewPage() {
   const { slug } = useParams();
 
   const [page, setPage] = useState<any>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const pages = getPages();
@@ -61,12 +63,18 @@ export default function PreviewPage() {
       </div>
 
       {/* Right */}
-      <Link
-        href={`/admin/${page.slug}`}
+      <button
+        onClick={() => {
+          if (window.history.length > 1) {
+            router.back();
+          } else {
+            router.push("/admin");
+          }
+        }}
         className="px-3 py-2 rounded-lg text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-200 transition"
       >
         ← Back
-      </Link>
+      </button>
 
     </div>
 
@@ -88,28 +96,3 @@ export default function PreviewPage() {
 </div>
   );
 }
-
-// "use client";
-
-// import { useParams } from "next/navigation";
-// import { getPages } from "@/lib/storage";
-// import TextRenderer from "@/components/blocks/text/TextRenderer";
-// import ImageRenderer from "@/components/blocks/image/ImageRenderer";
-
-// export default function PreviewPage() {
-//   const { slug } = useParams();
-//   const page = getPages().find((p: any) => p.slug === slug);
-
-//   if (!page) return <div>No page</div>;
-
-//   return (
-//     <div className="p-6 space-y-4">
-//       {page.blocks.map((block: any) => {
-//         if (block.type === "text")
-//           return <TextRenderer key={block.id} block={block} />;
-//         if (block.type === "image")
-//           return <ImageRenderer key={block.id} block={block} />;
-//       })}
-//     </div>
-//   );
-// }
