@@ -1,0 +1,131 @@
+[
+  {
+    "id": "1776084042466",
+    "name": "Home",
+    "slug": "home",
+    "blocks": [
+      {
+        "id": "1776084047371",
+        "type": "text",
+        "props": {
+          "content": "Deliver Smarter with InPost"
+        }
+      },
+      {
+        "id": "1776084069804",
+        "type": "text",
+        "props": {
+          "content": "Europe’s leading automated parcel locker network, transforming e-commerce delivery."
+        }
+      },
+      {
+        "id": "1776084080045",
+        "type": "image",
+        "props": {
+          "url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
+        }
+      },
+      {
+        "id": "1776084089678",
+        "type": "text",
+        "props": {
+          "content": "With over 60,000 parcel lockers and 35,000 pick-up points, InPost enables fast, flexible, and eco-friendly delivery."
+        }
+      },
+      {
+        "id": "1776084103958",
+        "type": "button",
+        "props": {
+          "url": "#",
+          "text": "Explore Services"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1776084143040",
+    "name": "Parcel Lockers",
+    "slug": "parcel-lockers",
+    "blocks": [
+      {
+        "id": "1776084155185",
+        "type": "text",
+        "props": {
+          "content": "Automated Parcel Machines (APMs)"
+        }
+      },
+      {
+        "id": "1776084223924",
+        "type": "text",
+        "props": {
+          "content": "Send, collect, and return parcels anytime with our 24/7 self-service lockers."
+        }
+      },
+      {
+        "id": "1776084239965",
+        "type": "image",
+        "props": {
+          "url": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a"
+        }
+      },
+      {
+        "id": "1776084253662",
+        "type": "text",
+        "props": {
+          "content": "Our lockers provide a convenient, contactless, and environmentally friendly delivery option."
+        }
+      },
+      {
+        "id": "1776084262830",
+        "type": "button",
+        "props": {
+          "url": "#",
+          "text": "Find a Locker"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1776084299784",
+    "name": "Careers",
+    "slug": "careers",
+    "blocks": [
+      {
+        "id": "1776084304040",
+        "type": "text",
+        "props": {
+          "content": "Join InPost Engineering Team"
+        }
+      },
+      {
+        "id": "1776084314744",
+        "type": "text",
+        "props": {
+          "content": "We’re building a modern content platform used across all InPost markets. Join us and grow in a real production environment."
+        }
+      },
+      {
+        "id": "1776084332712",
+        "type": "text",
+        "props": {
+          "content": "Work with Next.js, PayloadCMS, Astro, and a shared design system to build scalable solutions."
+        }
+      },
+      {
+        "id": "1776084343522",
+        "type": "text",
+        "props": {
+          "content": "We value curiosity, creativity, and a willingness to learn. Your ideas matter here."
+        }
+      },
+      {
+        "id": "1776084354098",
+        "type": "button",
+        "props": {
+          "url": "#",
+          "text": "Apply Now"
+        }
+      }
+    ]
+  }
+]
