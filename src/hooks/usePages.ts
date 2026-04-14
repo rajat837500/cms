@@ -17,24 +17,36 @@ export function usePages() {
 
   function addPage(name: string) {
     const newPage = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       name,
-      slug: name.toLowerCase().replace(/\s+/g, "-"),
+      slug: generateSlug(name),
       blocks: [], // IMPORTANT
     };
-
+  
     setPages((prev) => {
       const updated = [...prev, newPage];
-
+    
       // ✅ persist immediately (localStorage or backend)
       localStorage.setItem("pages", JSON.stringify(updated));
-
+    
       return updated;
     });
-
+  
     return newPage; // ✅ return immediately
   }
 
+  // function addPage(name: string) {
+  //   const newPage = {
+  //     id: generateId(),
+  //     name,
+  //     slug: generateSlug(name),
+  //     blocks: [],
+  //   };
+
+  //   const updated = [...pages, newPage];
+  //   setPages(updated);
+  //   savePages(updated);
+  // }
 
   function deletePage(id: string) {
     const updated = pages.filter((p: any) => p.id !== id);

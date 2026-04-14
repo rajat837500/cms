@@ -70,7 +70,7 @@ export default function EditorPage() {
         
                 <button
                   onClick={() => setShowPanel(false)}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-500 hover:text-gray-700 cursor-pointer transition"
                 >
                   ✕
                 </button>
