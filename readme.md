@@ -92,8 +92,6 @@ This project uses a **hybrid data system**:
 To reset back to default data:
 
 * Clear browser localStorage manually
-  OR
-* Use the reset button (if implemented)
 
 ---
 
