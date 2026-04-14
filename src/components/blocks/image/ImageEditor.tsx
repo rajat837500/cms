@@ -10,16 +10,3 @@ export default function ImageEditor({ block, updateBlock }: any) {
     />
   );
 }
-
-// export default function ImageEditor({ block, updateBlock }: any) {
-//   return (
-//     <input
-//       value={block.props.url}
-//       onChange={(e) =>
-//         updateBlock(block.id, { url: e.target.value })
-//       }
-//       className="border p-2 w-full"
-//       placeholder="Image URL"
-//     />
-//   );
-// }

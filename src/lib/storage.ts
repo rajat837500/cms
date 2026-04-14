@@ -1,7 +1,3 @@
-// export function getPages() {
-//   if (typeof window === "undefined") return [];
-//   return JSON.parse(localStorage.getItem("pages") || "[]");
-// }
 
 import defaultPages from "@/data/pages.json";
 

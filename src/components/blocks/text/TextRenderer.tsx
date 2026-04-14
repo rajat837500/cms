@@ -5,7 +5,3 @@ export default function TextRenderer({ block }: any) {
     </p>
   );
 }
-
-// export default function TextRenderer({ block }: any) {
-//   return <p className="text-lg">{block.props.content}</p>;
-// }

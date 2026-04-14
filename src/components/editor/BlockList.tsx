@@ -16,15 +16,3 @@ export default function BlockList(props: any) {
     </div>
   );
 }
-
-// import BlockItem from "./BlockItem";
-
-// export default function BlockList(props: any) {
-//   return (
-//     <div className="space-y-4">
-//       {props.blocks.map((block: any, i: number) => (
-//         <BlockItem key={block.id} index={i} block={block} {...props} />
-//       ))}
-//     </div>
-//   );
-// }

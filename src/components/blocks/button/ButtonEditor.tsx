@@ -23,27 +23,3 @@ export default function ButtonEditor({ block, updateBlock }: any) {
     </div>
   );
 }
-
-// export default function ButtonEditor({ block, updateBlock }: any) {
-//   return (
-//     <div className="space-y-2">
-//       <input
-//         value={block.props.text}
-//         onChange={(e) =>
-//           updateBlock(block.id, { text: e.target.value })
-//         }
-//         placeholder="Button text"
-//         className="input"
-//       />
-
-//       <input
-//         value={block.props.url}
-//         onChange={(e) =>
-//           updateBlock(block.id, { url: e.target.value })
-//         }
-//         placeholder="Button link (https://...)"
-//         className="input"
-//       />
-//     </div>
-//   );
-// }
