@@ -40,21 +40,3 @@ export default function AddBlockPanel({ addBlock }: any) {
     </div>
   );
 }
-
-// "use client";
-
-// export default function AddBlockPanel({ addBlock }: any) {
-//   return (
-//     <div className="flex gap-2 mb-4">
-//       <button onClick={() => addBlock("text")} className="btn">
-//         + Text
-//       </button>
-//       <button onClick={() => addBlock("image")} className="btn">
-//         + Image
-//       </button>
-//       <button onClick={() => addBlock("button")} className="btn">
-//         + Button
-//       </button>
-//     </div>
-//   );
-// }

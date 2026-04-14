@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePages } from "@/hooks/usePages";
 import Modal from "@/components/ui/Modal";
 import { Eye, Pencil, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function AdminPage() {
   const { pages, addPage, deletePage, isLoaded } = usePages();
@@ -13,17 +14,23 @@ export default function AdminPage() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pageName, setPageName] = useState("");
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  function handleCreate() {
-    if (!pageName.trim()) return;
+function handleCreate() {
+  if (!pageName.trim()) return;
 
-    addPage(pageName);
-    setPageName("");
-  }
+  const newPage = addPage(pageName); // NOT async
+
+  setPageName("");
+  setIsModalOpen(false);
+
+  router.push(`/admin/${newPage.slug}`);
+}
 
   if (!isLoaded) {
-  return <div className="p-6">Loading...</div>;
-}
+    return <div className="p-6">Loading...</div>;
+  }
 
   return (
 
@@ -46,7 +53,7 @@ export default function AdminPage() {
           {!isModalOpen && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition"
+              className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition cursor-pointer"
             >
               + Add Page
             </button>
@@ -115,11 +122,7 @@ export default function AdminPage() {
           </button>
     
           <button
-            onClick={() => {
-              handleCreate();
-              setIsModalOpen(false);
-            
-            }}
+            onClick={handleCreate}
             disabled={!pageName.trim()}
             className={`px-4 py-2 rounded-lg text-sm transition ${
             pageName.trim()
@@ -127,7 +130,7 @@ export default function AdminPage() {
               : "bg-purple-300 text-white cursor-not-allowed"
           }`}
           >
-            Create Page
+            {loading ? "Creating..." : "Create Page"}
           </button>
         </div>
       </Modal>
@@ -153,7 +156,7 @@ export default function AdminPage() {
     
               <button
                 onClick={() => setDeleteTarget(null)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 cursor-pointer transition"
               >
                 ✕
               </button>
@@ -175,7 +178,7 @@ export default function AdminPage() {
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setDeleteTarget(null)}
-                className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition"
+                className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition cursor-pointer"
               >
                 Cancel
               </button>
@@ -185,7 +188,7 @@ export default function AdminPage() {
                   deletePage(deleteTarget.id);
                   setDeleteTarget(null);
                 }}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 transition"
+                className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 transition cursor-pointer"
               >
                 Delete Page
               </button>
@@ -248,7 +251,7 @@ export default function AdminPage() {
               {/* Delete */}
     <button
       onClick={() => setDeleteTarget(p)}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-red-500 hover:bg-red-50 transition"
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-red-500 hover:bg-red-50 transition cursor-pointer"
     >
       <Trash2 size={14} />
       Delete

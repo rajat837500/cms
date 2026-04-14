@@ -10,16 +10,3 @@ export default function TextEditor({ block, updateBlock }: any) {
     />
   );
 }
-
-// export default function TextEditor({ block, updateBlock }: any) {
-//   return (
-//     <input
-//       value={block.props.content}
-//       onChange={(e) =>
-//         updateBlock(block.id, { content: e.target.value })
-//       }
-//       className="border p-2 w-full"
-//       placeholder="Enter text..."
-//     />
-//   );
-// }

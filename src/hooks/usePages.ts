@@ -17,16 +17,24 @@ export function usePages() {
 
   function addPage(name: string) {
     const newPage = {
-      id: generateId(),
+      id: crypto.randomUUID(),
       name,
-      slug: generateSlug(name),
-      blocks: [],
+      slug: name.toLowerCase().replace(/\s+/g, "-"),
+      blocks: [], // IMPORTANT
     };
 
-    const updated = [...pages, newPage];
-    setPages(updated);
-    savePages(updated);
+    setPages((prev) => {
+      const updated = [...prev, newPage];
+
+      // ✅ persist immediately (localStorage or backend)
+      localStorage.setItem("pages", JSON.stringify(updated));
+
+      return updated;
+    });
+
+    return newPage; // ✅ return immediately
   }
+
 
   function deletePage(id: string) {
     const updated = pages.filter((p: any) => p.id !== id);
@@ -36,59 +44,3 @@ export function usePages() {
 
   return { pages, addPage, deletePage, isLoaded };
 }
-
-// "use client";
-
-// import { useState } from "react";
-// import { getPages, savePages } from "@/lib/storage";
-// import { generateId, generateSlug } from "@/lib/utils";
-
-// export function usePages() {
-//   const [pages, setPages] = useState(getPages());
-
-//   function addPage(name: string) {
-//     const newPage = {
-//       id: generateId(),
-//       name,
-//       slug: generateSlug(name),
-//       blocks: [],
-//     };
-
-//     const updated = [...pages, newPage];
-//     setPages(updated);
-//     savePages(updated);
-//   }
-
-//   function deletePage(id: string) {
-//     const updated = pages.filter((p: any) => p.id !== id);
-//     setPages(updated);
-//     savePages(updated);
-//   }
-
-//   return { pages, addPage, deletePage };
-// }
-
-// "use client";
-
-// import { useState } from "react";
-// import { getPages, savePages } from "@/lib/storage";
-// import { generateId, generateSlug } from "@/lib/utils";
-
-// export function usePages() {
-//   const [pages, setPages] = useState(getPages());
-
-//   function addPage(name: string) {
-//     const newPage = {
-//       id: generateId(),
-//       name,
-//       slug: generateSlug(name),
-//       blocks: [],
-//     };
-
-//     const updated = [...pages, newPage];
-//     setPages(updated);
-//     savePages(updated);
-//   }
-
-//   return { pages, addPage };
-// }

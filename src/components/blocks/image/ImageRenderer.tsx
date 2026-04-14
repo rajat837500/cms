@@ -13,21 +13,3 @@ export default function ImageRenderer({ block }: any) {
     </div>
   );
 }
-
-// export default function ImageRenderer({ block }: any) {
-//   const url = block?.props?.url;
-
-//   if (!url || typeof url !== "string") return null;
-
-//   return (
-//     <img
-//       src={url}
-//       className="w-full rounded"
-//       alt="image"
-//     />
-//   );
-// }
-
-// export default function ImageRenderer({ block }: any) {
-//   return <img src={block.props.url} className="w-full" />;
-// }
