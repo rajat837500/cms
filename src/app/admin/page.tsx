@@ -6,6 +6,12 @@ import { usePages } from "@/hooks/usePages";
 import Modal from "@/components/ui/Modal";
 import { Eye, MoreVertical, Pencil, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu"
 
 export default function AdminPage() {
   const { pages, addPage, deletePage, isLoaded } = usePages();
@@ -255,7 +261,7 @@ export default function AdminPage() {
 
                     <button
                       onClick={() => setDeleteTarget(p)}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-red-500 hover:bg-red-50 transition"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-red-500 hover:bg-red-50 transition cursor-pointer"
                     >
                       <Trash2 size={14} />
                       Delete
@@ -263,57 +269,35 @@ export default function AdminPage() {
                   </div>
 
                   {/* Mobile (3 dots menu) */}
-                  <div className="sm:hidden relative">
-                <button
-                  onClick={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
+                  <div className="sm:hidden">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button className="p-2 rounded-md hover:bg-gray-800 transition cursor-pointer">
+                          <MoreVertical size={18} />
+                        </button>
+                      </DropdownMenuTrigger>
 
-                    setMenuPosition({
-                      x: rect.right,
-                      y: rect.bottom,
-                    });
+                      <DropdownMenuContent align="end" className="w-40 bg-gray-900 border border-gray-700 rounded-lg shadow-lg">
+                        <DropdownMenuItem asChild>
+                          <Link href={`/preview/${p.slug}`} className="text-green-400 cursor-pointer">
+                            Preview
+                          </Link>
+                        </DropdownMenuItem>
 
-                    setOpenMenuId(openMenuId === p.id ? null : p.id);
-                  }}
-                  className="p-2 rounded-md hover:bg-gray-800 transition cursor-pointer"
-                >
-                  <MoreVertical size={18} />
-                </button>
+                        <DropdownMenuItem asChild>
+                          <Link href={`/admin/${p.slug}`} className="text-blue-400 cursor-pointer">
+                            Edit
+                          </Link>
+                        </DropdownMenuItem>
 
-                {openMenuId === p.id && (
-                  <div
-                    className="fixed w-40 bg-gray-900 border border-gray-700 rounded-lg shadow-lg z-50"
-                    style={{
-                      top: menuPosition.y + 5,
-                      left: menuPosition.x - 160, // align right
-                    }}
-                  >
-
-                        <Link
-                          href={`/preview/${p.slug}`}
-                          className="block px-4 py-2 text-sm text-green-400 hover:bg-gray-800"
-                        >
-                          Preview
-                        </Link>
-
-                        <Link
-                          href={`/admin/${p.slug}`}
-                          className="block px-4 py-2 text-sm text-blue-400 hover:bg-gray-800"
-                        >
-                          Edit
-                        </Link>
-
-                        <button
-                          onClick={() => {
-                            setDeleteTarget(p);
-                            setOpenMenuId(null);
-                          }}
-                          className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-gray-800"
+                        <DropdownMenuItem
+                          onClick={() => setDeleteTarget(p)}
+                          className="text-red-400 cursor-pointer"
                         >
                           Delete
-                        </button>
-                      </div>
-                    )}
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 </div>
               </div>
